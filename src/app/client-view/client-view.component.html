@@ -1,0 +1,66 @@
+<div class="columns has-text-centered">
+  <div class="column">
+    <h1>Welcome to your list </h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <input class="input" type="text" 
+                      placeholder="Filter String" 
+                      [(ngModel)]="searchString">
+    <div *ngFor="let row of rows | filter: searchString">
+      {{row.client_id}}
+      {{row.first_name}}
+      {{row.mi_initial}}
+      {{row.last_name}}
+      {{row.number1}}
+    </div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <ngx-charts-bar-vertical
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="data"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="column">
+    <input class="input" type="tel" 
+         placeholder="(555)-555-5555"
+         mask="(000)-000-0000"
+         maxlength="14"
+         [(ngModel)]="phoneNumber">
+
+    <button (click)="testMethod()" [disabled]="phoneNumber.length < 10">PUSH ME</button>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div *ngFor="let dc of checks">
+      <label>
+          <input type="checkbox"
+              name="datacenters"
+              value="{{dc.value}}"
+              [(ngModel)]="dc.checked"/>
+          {{dc.name}}
+      </label>
+    </div>
+  </div>
+  <div class="column">
+    <div *ngIf="errorMessage">
+      <h1>{{errorMessage}}</h1>
+    </div> 
+  </div>
+</div>
