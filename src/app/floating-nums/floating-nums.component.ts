@@ -10,10 +10,19 @@ export class FloatingNumsComponent implements OnInit {
   latitude: number;
   longitude: number;
   zoom:number;
- 
+
+  dateString: string = "";
+  phoneNumber: string = "";
  
   ngOnInit() {
     this.setCurrentLocation();
+  }
+
+  test(){
+    console.log({
+      "Date:" : this.dateString,
+      "Number": this.phoneNumber
+    })
   }
  
     // Get Current Location Coordinates

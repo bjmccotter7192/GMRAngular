@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientViewComponent } from './client-view/client-view.component';
 import { ToggleInputsComponent } from './toggle-inputs/toggle-inputs.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FloatingNumsComponent } from './floating-nums/floating-nums.component';
 
 const routes: Routes = [
   { 
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'fileupload',
     component: FileUploadComponent
+  },
+  {
+    path: 'floatNumb',
+    component: FloatingNumsComponent
   }
 ]
 

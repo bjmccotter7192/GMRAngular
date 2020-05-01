@@ -1,11 +1,49 @@
-<p>floating-nums works!</p>
-
-<agm-map 
-    [latitude]="latitude" 
-    [longitude]="longitude"
-    [zoom]="zoom" >
-    <agm-marker 
-        [latitude]="latitude" 
-        [longitude]="longitude">
-    </agm-marker>
-</agm-map>
+<div class="columns">
+    <div class="column">
+        <form (ngSubmit)="test()" #inputValidationForm="ngForm">
+            <div class="field">
+                <label class="label">Date ex: 2020-05-20</label>
+                <div class="control">
+                    <input class="input" 
+                            type="input" 
+                            name="dateString"
+                            [pattern]="'[0-9]{4}[-][0-9]{2}[-][0-9]{2}'"
+                            required
+                            [(ngModel)]="dateString" 
+                            placeholder="YYYY-MM-DD"
+                            #dateModel="ngModel">
+                </div>
+                <div style="color: red;" [hidden]="!dateModel.errors || dateString == ''">
+                    Please use standard 2020-05-20, Thanks!
+                </div>
+            </div>
+        
+            <!-- [pattern]="'[0-9]{4}[-][0-9]{2}[-][0-9]{2}'" -->
+        
+            <div class="field">
+                <label class="label">Phone</label>
+                <div class="control">
+                    <input class="input" 
+                            type="input" 
+                            placeholder="(555)-555-5555"
+                            name="phoneNumber"
+                            required
+                            mask="(000)-000-0000"
+                            maxlength="14"
+                            [(ngModel)]="phoneNumber"
+                            #phoneNumberModel="ngModel">
+                </div>
+                <div style="color: red;" [hidden]="!phoneNumberModel.errors || phoneNumber == ''">
+                    Please use standard (000)-000-0000, Thanks!
+                </div>
+            </div>
+        
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" 
+                            [disabled]="!inputValidationForm.form.valid">Get Cname Data</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
